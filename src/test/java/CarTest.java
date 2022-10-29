@@ -43,4 +43,16 @@ class CarTest {
         car.setOwner("Dmitry Pavlov");
         assertEquals("Dmitry Pavlov", car.getOwner());
     }
+
+    @Test
+    void getListOfOwners(){
+        assertArrayEquals(new String[]{"Aleksandr Philimonov"}, car.getOwners().toArray());
+
+    }
+
+    @Test
+    void getListOfTwoOwners(){
+        car.setOwner("Dmitry Pavlov");
+        assertArrayEquals(new String[]{"Aleksandr Philimonov", "Dmitry Pavlov"}, car.getOwners().toArray());
+    }
 }
