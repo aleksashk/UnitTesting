@@ -12,7 +12,10 @@ class DogTest {
     }
 
     @Test
-    void setName() {
+    void setDogNameMethod() {
+        Dog newDog = new Dog("Bob", 2);
+        newDog.setName("Albert");
+        assertEquals("Albert", newDog.getName());
     }
 
     @Test
