@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class DogTest {
 
+    static Dog dog;
+
     Dog newDog;
+
+    @BeforeAll
+    static void prepareData(){
+        dog = new Dog("Bob", 2);
+    }
 
     @BeforeEach
     void createDog() {
@@ -15,13 +23,13 @@ class DogTest {
 
     @Test
     void testGetDogNameMethod() {
-        assertNotEquals("Alex", newDog.getName());
+        assertNotEquals("Alex", dog.getName());
     }
 
     @Test
     void setDogNameMethod() {
         newDog.setName("Albert");
-        assertEquals("Bob", newDog.getName());
+        assertEquals("Bob", dog.getName());
     }
 
     @Test
