@@ -15,7 +15,14 @@ class DogTest {
     void setDogNameMethod() {
         Dog newDog = new Dog("Bob", 2);
         newDog.setName("Albert");
-        assertNotEquals("Albert", newDog.getName());
+        assertEquals("Bob", newDog.getName());
+    }
+
+    @Test
+    void setDogNameMethodIfEmpty() {
+        Dog newDog = new Dog("", 2);
+        newDog.setName("Albert");
+        assertEquals("Albert", newDog.getName());
     }
 
     @Test

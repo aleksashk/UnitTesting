@@ -15,7 +15,7 @@ public class Dog {
     }
 
     public void setName(String name) {
-        if (name.isEmpty()) {
+        if (this.name.isEmpty()) {
             this.name = name;
         }
     }
