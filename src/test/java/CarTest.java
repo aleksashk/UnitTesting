@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
@@ -45,14 +47,42 @@ class CarTest {
     }
 
     @Test
-    void getListOfOwners(){
+    void getListOfOwners() {
         assertArrayEquals(new String[]{"Aleksandr Philimonov"}, car.getOwners().toArray());
 
     }
 
     @Test
-    void getListOfTwoOwners(){
+    void getListOfTwoOwners() {
         car.setOwner("Dmitry Pavlov");
         assertArrayEquals(new String[]{"Aleksandr Philimonov", "Dmitry Pavlov"}, car.getOwners().toArray());
+    }
+
+    @Test
+    public void testPrivateMethod() {
+
+        try {
+            Method method = Car.class.getDeclaredMethod("testMethod", null);
+
+            method.setAccessible(true);
+            assertEquals(method.invoke(car).toString(), "abc");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void testPrivateMethodWithParameter() {
+
+        try {
+            Method method = Car.class.getDeclaredMethod("testMethod", String.class);
+
+            method.setAccessible(true);
+            assertEquals(method.invoke(car, "asdf").toString(), "asdf");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
