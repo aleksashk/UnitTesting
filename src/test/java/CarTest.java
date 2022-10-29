@@ -52,6 +52,12 @@ class CarTest {
         assertEquals(x, car.getNumber());
     }
 
+    @ParameterizedTest
+    @CsvSource({"'1', '5'", "'67', '71'", "'32', '36'"})
+    void testInt(int input, int output) {
+        assertEquals(car.testInt(input), output);
+    }
+
     @Test
     void getYear() {
         assertEquals(2019, car.getYear());

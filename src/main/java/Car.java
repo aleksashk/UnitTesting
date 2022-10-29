@@ -55,4 +55,8 @@ public class Car {
     private String testMethod(String a, String b) {
         return b;
     }
+
+    public int testInt(int a){
+        return a + 4;
+    }
 }
