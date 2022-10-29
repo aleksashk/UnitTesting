@@ -1,13 +1,15 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Method;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
 
@@ -38,9 +40,16 @@ class CarTest {
     @ValueSource(strings = {"ASDFG-1003", "REQWE-4889", "", "-"})
     @NullSource
     @EmptySource
-    void testSetNumberMultipleValues(String number){
+    void testSetNumberMultipleValues(String number) {
         car.setNumber(number);
         assertEquals(number, car.getNumber());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"'ASDFASD-12', 'ASDFASD-12'", "'243523-SDFA', '243523-SDFA'"})
+    void testSetNumberMultipleValues(String number, String x) {
+        car.setNumber(number);
+        assertEquals(x, car.getNumber());
     }
 
     @Test
