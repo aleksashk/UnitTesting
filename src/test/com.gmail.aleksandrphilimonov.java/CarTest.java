@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarTest {
 
@@ -142,9 +143,18 @@ class CarTest {
     @ParameterizedTest
     @DisplayName("Test demonstrates how test data could be loaded from file")
     @CsvFileSource(resources = "test-data.csv", delimiter = '|', numLinesToSkip = 1)
-    public void testNumbers(String input, String expected){
+    public void testNumbers(String input, String expected) {
         car.setNumber(input);
         assertEquals(expected, car.getNumber());
+    }
+
+    @Test
+    void getTestData() {
+        Exception exception = assertThrows(Exception.class, () -> {
+            car.getDataFromRemoteServer();
+        });
+
+        assertEquals("error!!!", exception.getMessage());
     }
 
 }

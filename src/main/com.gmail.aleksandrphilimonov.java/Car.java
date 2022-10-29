@@ -68,4 +68,8 @@ public class Car {
     public String toString() {
         return getManufacturer();
     }
+
+    public void getDataFromRemoteServer() throws RuntimeException {
+        throw new RuntimeException("error!!!");
+    }
 }
