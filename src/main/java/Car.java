@@ -59,4 +59,13 @@ public class Car {
     public int testInt(int a){
         return a + 4;
     }
+
+    public void carInfoPrinter(){
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return getManufacturer();
+    }
 }

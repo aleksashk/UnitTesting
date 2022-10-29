@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -111,5 +113,27 @@ class CarTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testCarInfoPrinter() {
+        String consoleOutput = null;
+        PrintStream originalOut = System.out;
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream(100);
+            PrintStream capture = new PrintStream(outputStream);
+
+            System.setOut(capture);
+
+            Car newCar = new Car("Audi", "789878-CDF", 1999, "Aleksandr Philimonov");
+            newCar.carInfoPrinter();
+
+            capture.flush();
+            consoleOutput = outputStream.toString();
+            System.setOut(originalOut);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertEquals("Audi\r\n", consoleOutput);
     }
 }
