@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestClassCar {
 
     @Test
-    @EnabledOnOs(OS.WINDOWS)
-    @DisabledOnOs(OS.LINUX)
-    @EnabledOnJre(JRE.JAVA_11)
-    @DisabledOnJre(JRE.JAVA_8)
+    @EnabledOnOs({OS.WINDOWS, OS.MAC})
+    @DisabledOnOs({OS.LINUX, OS.AIX})
+    @EnabledOnJre({JRE.JAVA_11, JRE.JAVA_9})
+    @DisabledOnJre({JRE.JAVA_12, JRE.JAVA_8})
     public void getCarYear() {
         Car car = new Car("Audi", "7898-RTY", 2012, "Aleksandr Philimonov");
         assertEquals(2012, car.getYear());
