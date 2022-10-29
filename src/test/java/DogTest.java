@@ -1,13 +1,14 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class DogTest {
 
     @Test
     void testGetDogNameMethod() {
         Dog newDog = new Dog("Bob", 2);
-        assertEquals("Bob", newDog.getName());
+        assertNotEquals("Alex", newDog.getName());
     }
 
     @Test
