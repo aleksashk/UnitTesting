@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Method;
 
@@ -28,6 +32,15 @@ class CarTest {
     void setNumber() {
         car.setNumber("ABCD-1234");
         assertEquals("ABCD-1234", car.getNumber());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ASDFG-1003", "REQWE-4889", "", "-"})
+    @NullSource
+    @EmptySource
+    void testSetNumberMultipleValues(String number){
+        car.setNumber(number);
+        assertEquals(number, car.getNumber());
     }
 
     @Test
@@ -83,6 +96,5 @@ class CarTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
