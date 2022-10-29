@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -136,4 +138,13 @@ class CarTest {
         }
         assertEquals("Audi\r\n", consoleOutput);
     }
+
+    @ParameterizedTest
+    @DisplayName("Test demonstrates how test data could be loaded from file")
+    @CsvFileSource(resources = "test-data.csv", delimiter = '|', numLinesToSkip = 1)
+    public void testNumbers(String input, String expected){
+        car.setNumber(input);
+        assertEquals(expected, car.getNumber());
+    }
+
 }
