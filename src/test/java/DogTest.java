@@ -15,7 +15,7 @@ class DogTest {
     void setDogNameMethod() {
         Dog newDog = new Dog("Bob", 2);
         newDog.setName("Albert");
-        assertEquals("Albert", newDog.getName());
+        assertNotEquals("Albert", newDog.getName());
     }
 
     @Test

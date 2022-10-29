@@ -15,7 +15,9 @@ public class Dog {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.isEmpty()) {
+            this.name = name;
+        }
     }
 
     public int getAge() {
