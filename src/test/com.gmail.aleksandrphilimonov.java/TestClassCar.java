@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledOnJre;
+import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.JRE;
@@ -11,6 +12,7 @@ public class TestClassCar {
 
     @Test
     @EnabledOnOs(OS.WINDOWS)
+    @DisabledOnOs(OS.LINUX)
     @EnabledOnJre(JRE.JAVA_11)
     @DisabledOnJre(JRE.JAVA_8)
     public void getCarYear() {
